@@ -5,6 +5,7 @@
     <LoginComponent></LoginComponent>
     <!--<LogosComponent myWidth="30" myHeight="30"></LogosComponent>-->
     <TablaUsuarios></TablaUsuarios>
+    
   </div>
 </template>
 
