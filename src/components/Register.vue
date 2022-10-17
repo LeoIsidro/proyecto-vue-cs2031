@@ -1,15 +1,15 @@
 <template>
     <div class="Register content-center">
-      <label for="username">Username: </label>
-      <input v-bind:value="username" v-on:input="onUsernameInput" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-20">
+      <label for="newUsername">Username: </label>
+      <input v-bind:value="newUsername" v-on:input="onUsernameInput" name="newUsername" id="newUsername" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-20">
       <br><br>
-      <label for="Email" >Email:</label>
-      <input v-bind:value="password" v-on:input="onPasswordInput"  name="Email" id="Email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-20">
+      <label for="newEmail" >Email:</label>
+      <input v-bind:value="newEmail" v-on:input="onEmailInput"  name="newEmail" id="newEmail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-20">
       <br><br>
-      <label for="password" type="password">Password: </label>
-      <input v-bind:value="password" v-on:input="onPasswordInput"  name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-20">
+      <label for="newPassword" type="password">Password: </label>
+      <input v-bind:value="newPassword" v-on:input="onPasswordInput"  name="newPassword" id="newPassword" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  w-20">
       <br><br>
-      <button v-on:click="onLogin" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Register!</button>
+      <button v-on:click="onRegister" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Register!</button>
       <br><br>
       <div v-if="success && RegisterAttempt" id="success">Success!</div>
       <div v-if="!success && RegisterAttempt" id="fail">Incorrect username or password</div>
@@ -24,9 +24,9 @@
     },
   data () {
       return {
-          username: "",
-          password: "",
-          email:"",
+          newUsername: "",
+          newPassword: "",
+          newEmail:"",
           success: false,
           RegisterAttempt: false
       }
@@ -34,23 +34,23 @@
   methods: {
       onUsernameInput(e) {
           this.RegisterAttempt = false;
-          this.username = e.target.value;
+          this.newUsername = e.target.value;
       },
       onPasswordInput(e) {
           this.RegisterAttempt = false;
-          this.password = e.target.value;
+          this.newPassword = e.target.value;
       },
-      onPasswordEmail(e) {
+      onEmailInput(e) {
           this.RegisterAttempt = false;
-          this.email = e.target.value;
+          this.newEmail = e.target.value;
       },
       onRegister() {
           const url = "http://localhost:5000/login/register";
 
           const body = {
-              "username": this.username,
-              "password": this.password,
-              "email": this.email,
+              "newUsername": this.newUsername,
+              "newPassword": this.newPassword,
+              "newEmail": this.newEmail,
           };
 
           fetch(url, {
@@ -76,7 +76,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   #success {
-      color: green;
+      color: blue;
   }
 
   #fail {
